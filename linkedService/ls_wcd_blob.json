@@ -1,0 +1,19 @@
+{
+	"name": "ls_wcd_blob",
+	"properties": {
+		"description": "This linked service connects to WeCloudData's public storage blob for use in pipeline 2.",
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=wcddestorageexternal;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_ProjectKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "wcd-blob-access-key"
+			}
+		}
+	}
+}

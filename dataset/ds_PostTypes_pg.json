@@ -1,0 +1,17 @@
+{
+	"name": "ds_PostTypes_pg",
+	"properties": {
+		"description": "This dataset represents the PostTypes table stored in the RDS PostgreSQL DB.",
+		"linkedServiceName": {
+			"referenceName": "ls_rds_pg",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "PostgreSqlV2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "raw_st",
+			"table": "posttypes"
+		}
+	}
+}

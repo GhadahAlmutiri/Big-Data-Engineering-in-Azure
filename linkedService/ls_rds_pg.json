@@ -1,0 +1,24 @@
+{
+	"name": "ls_rds_pg",
+	"properties": {
+		"description": "This linked service is used to connect to the RDS PostgreSQL database.",
+		"annotations": [],
+		"type": "PostgreSqlV2",
+		"typeProperties": {
+			"server": "de-rds.czm23kqmbd6o.ca-central-1.rds.amazonaws.com",
+			"port": 5432,
+			"database": "stack",
+			"username": "postgres",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_ProjectKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "RDS-PostgreSql-Password"
+			},
+			"sslMode": 2,
+			"authenticationType": "Basic"
+		}
+	}
+}

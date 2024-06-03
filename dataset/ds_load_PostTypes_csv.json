@@ -1,0 +1,25 @@
+{
+	"name": "ds_load_PostTypes_csv",
+	"properties": {
+		"description": "This dataset loads posttypes from RDS as postgressql to posts file in my blob storage in a csv format",
+		"linkedServiceName": {
+			"referenceName": "ls_my_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "rds-postTypes.csv",
+				"folderPath": "Capstone2/postTypes",
+				"container": "mydatalakefilesystem"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

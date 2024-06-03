@@ -1,0 +1,21 @@
+{
+	"name": "ds_load_Posts_WCD_pq",
+	"properties": {
+		"description": "This data set loads post from we cloud data's blob storage to posts file in my blob storage in a Parquet format",
+		"linkedServiceName": {
+			"referenceName": "ls_my_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Capstone2/posts",
+				"container": "mydatalakefilesystem"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "AzureDatabricksDeltaLake1",
+	"properties": {
+		"description": "A linked service to connect Azure data factory to Azure databricks",
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLake",
+		"typeProperties": {
+			"domain": "https://adb-905996515831982.2.azuredatabricks.net",
+			"clusterId": "0525-112459-tykt6jm7",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_ProjectKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "AzureDatabricks"
+			}
+		}
+	}
+}

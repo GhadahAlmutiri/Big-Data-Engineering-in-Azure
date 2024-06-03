@@ -1,0 +1,19 @@
+{
+	"name": "ls_my_blob",
+	"properties": {
+		"description": "This linked service is used to link my own storage blob for both pipelines.",
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=capstonedlstorage;",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_ProjectKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "my-blob-access-key"
+			}
+		}
+	}
+}

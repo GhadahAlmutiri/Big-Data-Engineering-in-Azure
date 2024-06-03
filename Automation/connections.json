@@ -1,0 +1,17 @@
+{
+  "managedApiConnections": {
+    "outlook": {
+      "api": {
+        "id": "/subscriptions/1c6d9a05-9a54-48f8-9e27-77f9b006eb84/providers/Microsoft.Web/locations/eastus/managedApis/outlook"
+      },
+      "connection": {
+        "id": "/subscriptions/1c6d9a05-9a54-48f8-9e27-77f9b006eb84/resourceGroups/capstone-project-RG/providers/Microsoft.Web/connections/outlook"
+      },
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      },
+      "connectionRuntimeUrl": "https://8f06ff654fbc17b9.17.common.logic-eastus.azure-apihub.net/apim/outlook/4e8366a27e5b4f8b8800b580e4d4a632"
+    }
+  },
+  "serviceProviderConnections": {}
+}

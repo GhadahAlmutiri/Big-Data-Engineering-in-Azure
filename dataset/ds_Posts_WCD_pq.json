@@ -1,0 +1,21 @@
+{
+	"name": "ds_Posts_WCD_pq",
+	"properties": {
+		"description": "This dataset represents the Posts parquet files stored on WeCloudData's storage blob.",
+		"linkedServiceName": {
+			"referenceName": "ls_wcd_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Posts_today",
+				"container": "de-project-st"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

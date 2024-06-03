@@ -1,0 +1,98 @@
+{
+	"name": "Load Posts Data",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_Posts_WCD_pq1",
+						"type": "DatasetReference"
+					},
+					"name": "ReadSourceData"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SavePostsData",
+					"rejectedDataLinkedService": {
+						"referenceName": "ls_my_blob",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SaveIncrementalDate"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FitlerOnlyIncrementalData"
+				},
+				{
+					"name": "GetIncrementalDate"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     incrementalDate as string ('2024-05-14T00:00:00')",
+				"}",
+				"source(output(",
+				"          id as integer,",
+				"          AcceptedAnswerId as integer,",
+				"          AnswerCount as integer,",
+				"          Body as string,",
+				"          CommentCount as integer,",
+				"          CreationDate as date,",
+				"          FavoriteCount as integer,",
+				"          LastEditDate as date,",
+				"          LastEditorDisplayName as string,",
+				"          LastEditorUserId as integer,",
+				"          OwnerUserId as integer,",
+				"          ParentId as integer,",
+				"          PostTypeId as integer,",
+				"          Score as float,",
+				"          Tags as string,",
+				"          Title as string,",
+				"          ViewCount as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet',",
+				"     wildcardPaths:['*']) ~> ReadSourceData",
+				"ReadSourceData filter(LastEditDate > toDate($incrementalDate, 'yyyy-MM-dd')) ~> FitlerOnlyIncrementalData",
+				"FitlerOnlyIncrementalData aggregate(MaxLastEditDate = coalesce(toString(max(LastEditDate)), $incrementalDate)) ~> GetIncrementalDate",
+				"FitlerOnlyIncrementalData sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     fileSystem: 'mydatalakefilesystem',",
+				"     folderPath: 'Capstone2/incremetal_pl/posts_incremental/inbound',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SavePostsData",
+				"GetIncrementalDate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     fileSystem: 'mydatalakefilesystem',",
+				"     folderPath: 'Capstone2/incremetal_pl/incrementalDate',",
+				"     truncate: true,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SaveIncrementalDate"
+			]
+		}
+	}
+}

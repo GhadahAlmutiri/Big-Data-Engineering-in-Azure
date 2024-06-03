@@ -1,0 +1,9 @@
+{
+	"name": "capstone-datalake-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dba08f7a-583b-496c-9e81-dd6e730d3206",
+		"tenantId": "04fc3788-0ffa-4326-8c4c-9c5fc5ef362f"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"name": "ls_ProjectKeyVault",
+	"properties": {
+		"description": "This linked service provides secure access to secrets stored in the Azure Key Vault for the project.",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://WCDProjectKeyVault.vault.azure.net/"
+		}
+	}
+}
