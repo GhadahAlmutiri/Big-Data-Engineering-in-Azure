@@ -38,6 +38,7 @@ The dataset is from StackOverflow, recording daily online posts, post types, and
 - **Azure Data Lake**: Store ingested files, ML data, and output data.
 - **Azure Data Factory (ADF)**: Finish the entire pipeline.
 - **Azure Synapse**: Platform for data analysis.
+  
  *daily pipeline*
 ![image](https://github.com/GhadahAlmutiri/Big-Data-Engineering-in-Azure/assets/74125257/d895f61c-2ce0-4db3-8261-11682965c11c)
 ![image](https://github.com/GhadahAlmutiri/Big-Data-Engineering-in-Azure/assets/74125257/4e7339a4-a8a6-4b94-9e8d-a1c796d39470)
